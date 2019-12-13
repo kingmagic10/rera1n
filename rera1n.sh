@@ -2,12 +2,12 @@
 # Over WiFi or USB
 echo [*] Welcome to ReRa1n
 echo "[*] Checking for dependencies" 
-if [ ! -e rerain-dep ]
+if [ ! -e rerain-deps ]
 then
     echo "[-] Dependencies not found"
     echo "[*] Installing dependencies"
-    mkdir rerain-dep
-    cd rerain-dep
+    mkdir rerain-deps
+    cd rerain-deps
     sudo apt-get install libgcrypt20-doc gnutls-doc gnutls-bin usbmuxd git libplist-dev libplist++ python2.7-dev python3-dev libusbmuxd4 libreadline6-dev make libusb-dev openssl libimobiledevice-dev libzip-dev libcurl4-openssl-dev libssl-dev
     git clone https://github.com/libimobiledevice/libplist
     cd libplist
@@ -53,7 +53,7 @@ then
     echo "[*] Restart program to continue"
     exit
 fi
-if [ -e rerain-dep ]
+if [ -e rerain-deps ]
 then
     echo "[*] Dependencies found!"
 fi
@@ -78,8 +78,8 @@ then
     echo [*] USB selected.
     ideviceip=localhost
     ideviceport=2222
-    cd rerain-dep
-    echo "[*] Open a second terminal window and enter: cd rerain-dep && sudo ./forward.sh "
+    cd rerain-deps
+    echo "[*] Open a second terminal window and enter: cd rerain-deps && sudo ./forward.sh "
     read -p "[*] Press enter to continue:" 
     read -p "[*] Enter the root password of your iDevice: " idevicepassword
     ssh root@localhost -p 2222 exit
